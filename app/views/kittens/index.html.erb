@@ -1,2 +1,17 @@
-<h1>Kittens#index</h1>
-<p>Find me in app/views/kittens/index.html.erb</p>
+<h1>Kittens everywhere!</h1>
+
+<%= link_to "Kreate Kitty!", new_kitten_path %> 
+
+<br> <br> <br>
+
+<% @kitten.each do |kitten| %>
+    <%= link_to kitten.name, kitten_path(kitten) %>
+    <br>
+    Kitten Age - <%= kitten.age %> <br>
+    Kitten Cuteness - <%= kitten.cuteness %> <br>
+    Kitten Softness - <%= kitten.softness %> <br>
+    <%= link_to 'Edit Kitten', edit_kitten_path(kitten) %> <br>
+    <%= link_to 'Delete Kitten', kitten_path(kitten), method: :delete %> <br>
+<% end %>
+
+<%= flash[:notice] %>
